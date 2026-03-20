@@ -14,6 +14,7 @@ def calculate():
     num1 = float(request.form["num1"])
     num2 = float(request.form["num2"])
     operation = request.form["operation"]
+    
 
     if operation == "add":
         result = num1 + num2
