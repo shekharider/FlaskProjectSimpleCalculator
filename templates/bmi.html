@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator_style_sunrise.css') }}">
+</head>
+
+<body>
+<a href="/" class="back-btn">Back</a>
+
+<div class="calculator">
+
+<h2>BMI Calculator</h2>
+
+<form action="/bmi" method="POST">
+
+<input type="number" name="weight" step="any" placeholder="Enter weight (kg)">
+
+<input type="number" name="height" step="any" placeholder="Enter height (cm)">
+
+<button type="submit">Calculate BMI</button>
+
+</form>
+
+{% if result_message %}
+<div class="result-box error">
+    <p class="result-line">{{ result_message }}</p>
+</div>
+{% elif bmi_result %}
+<div class="result-box">
+    <p class="result-line">BMI: <span>{{ bmi_result }}</span></p>
+    <p class="result-line">Category: <span>{{ bmi_category }}</span></p>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

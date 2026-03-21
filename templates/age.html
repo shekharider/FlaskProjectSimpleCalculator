@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator_style_glass.css') }}">
+</head>
+
+<body>
+<a href="/" class="back-btn">Back</a>
+
+<div class="calculator wide">
+
+<h2>Age Calculator</h2>
+
+<form action="/age" method="POST">
+
+<input type="date" name="dob" value="{{ dob_value if dob_value else '' }}">
+
+<button type="submit">Calculate Age</button>
+
+</form>
+
+{% if result_message %}
+<div class="result-box error">
+<p class="result-line">{{ result_message }}</p>
+</div>
+{% elif age_years is defined %}
+<div class="result-box">
+<p class="result-line">Exact Age: <span>{{ age_years }} years, {{ age_months }} months, {{ age_days }} days</span></p>
+<p class="result-line">Born On: <span>{{ day_of_birth }}</span></p>
+<p class="result-line">Total Months: <span>{{ total_months }}</span></p>
+<p class="result-line">Total Weeks: <span>{{ total_weeks }}</span></p>
+<p class="result-line">Total Days: <span>{{ total_days }}</span></p>
+<p class="result-line">Next Birthday: <span>{{ next_birthday }} (in {{ days_until_birthday }} days)</span></p>
+<p class="result-line">Age on Next Birthday: <span>{{ age_on_next_birthday }}</span></p>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

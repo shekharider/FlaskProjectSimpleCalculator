@@ -3,14 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tools</title>
+    <title>Basic Tools Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
-
 <body>
 
-    <h1>Hello Shank</h1>
-    <p>This is my first HTML page.</p>
-    <button onclick="window.location.href='http://127.0.0.1:5000/create'">calculator</button>
+    <div class="page">
+        <div class="hero-box">
+            <h1>Basic Tools Hub</h1>
+            <p class="intro">
+                Welcome to your simple online toolbox for everyday tasks.
+                Use fast, clean, and beginner-friendly tools designed to help you solve small problems quickly.
+            </p>
+            <p class="intro">
+                More tools can be added here over time, so this page can become your one place for useful utilities like calculators, converters, checkers, and more.
+            </p>
+
+            <div class="tools-section">
+                <h2>Available Tools</h2>
+
+                <div class="tool-list">
+                    <div class="tool-card">
+                        <div class="tool-content">
+                            <h3>1. Calculator</h3>
+                            <p>
+                                Perform basic arithmetic operations like addition, subtraction,
+                                multiplication, and division with a simple interface.
+                            </p>
+                        </div>
+                        <div class="tool-action">
+                            <a href="{{ url_for('create') }}" class="tool-btn">Open Tool</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-content">
+                            <h3>2. BMI Calculator</h3>
+                            <p>
+                                Check your Body Mass Index (BMI) using weight (kg) and
+                                height (cm), with an instant health category result.
+                            </p>
+                        </div>
+                        <div class="tool-action">
+                            <a href="{{ url_for('bmi_calculator') }}" class="tool-btn">Open Tool</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-content">
+                            <h3>3. Unit Converter</h3>
+                            <p>
+                                Convert common values across Length, Weight, Temperature,
+                                and Pressure with easy unit selection.
+                            </p>
+                        </div>
+                        <div class="tool-action">
+                            <a href="{{ url_for('unit_converter') }}" class="tool-btn">Open Tool</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-content">
+                            <h3>4. Age Calculator</h3>
+                            <p>
+                                Enter your birth date to see exact age, day of birth, total
+                                time summary, and next birthday countdown.
+                            </p>
+                        </div>
+                        <div class="tool-action">
+                            <a href="{{ url_for('age_calculator') }}" class="tool-btn">Open Tool</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

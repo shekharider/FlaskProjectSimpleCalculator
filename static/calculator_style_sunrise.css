@@ -1,0 +1,100 @@
+:root {
+    --bg: linear-gradient(140deg, #fff7ed, #ffedd5, #fde68a);
+    --card: #ffffff;
+    --text: #431407;
+    --muted: #7c2d12;
+    --border: #fdba74;
+    --accent: #ea580c;
+    --accent-hover: #c2410c;
+    --result-bg: #fff7ed;
+    --result-border: #fdba74;
+    --error-bg: #fef2f2;
+    --error-border: #fca5a5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 16px 20px;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.calculator {
+    width: min(100%, 390px);
+    background: var(--card);
+    border-radius: 18px;
+    padding: 28px 22px 22px;
+    border: 1px solid #fed7aa;
+    box-shadow: 0 20px 35px rgba(154, 52, 18, 0.16);
+}
+
+.calculator.wide { width: min(100%, 530px); }
+.calculator h2 { margin: 0 0 14px; text-align: center; }
+
+input, select {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: #fffaf5;
+    color: var(--text);
+    font-size: 0.98rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.18);
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover { background: var(--accent-hover); }
+
+.result-box {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--result-bg);
+    border: 1px solid var(--result-border);
+}
+
+.result-box.error {
+    background: var(--error-bg);
+    border-color: var(--error-border);
+}
+
+.result-line { margin: 6px 0; color: var(--muted); font-weight: 700; }
+.result-line span { color: var(--text); }
+
+.back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    padding: 8px 13px;
+    border-radius: 8px;
+    color: #9a3412;
+    text-decoration: none;
+    border: 1px solid #fdba74;
+    background: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+}
+
