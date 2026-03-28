@@ -1,0 +1,99 @@
+:root {
+    --bg: linear-gradient(145deg, #0b132b, #1c2541, #3a506b);
+    --card-bg: rgba(255, 255, 255, 0.12);
+    --card-border: rgba(255, 255, 255, 0.2);
+    --text: #f8fafc;
+    --muted: #e2e8f0;
+    --accent: #22d3ee;
+    --accent-hover: #06b6d4;
+    --result-bg: rgba(15, 23, 42, 0.35);
+    --result-border: rgba(34, 211, 238, 0.35);
+    --error-bg: rgba(127, 29, 29, 0.35);
+    --error-border: rgba(254, 202, 202, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 76px 16px 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.calculator {
+    width: min(100%, 390px);
+    border-radius: 20px;
+    padding: 30px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.35);
+}
+
+.calculator.wide { width: min(100%, 540px); }
+.calculator h2 { margin: 0 0 14px; text-align: center; }
+
+input, select {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(226, 232, 240, 0.35);
+    background: rgba(15, 23, 42, 0.45);
+    color: var(--text);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.22);
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #082f49;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover { background: var(--accent-hover); }
+
+.result-box {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--result-bg);
+    border: 1px solid var(--result-border);
+}
+
+.result-box.error {
+    background: var(--error-bg);
+    border-color: var(--error-border);
+}
+
+.result-line { margin: 6px 0; color: var(--muted); font-weight: 600; }
+.result-line span { color: var(--text); }
+
+.back-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    padding: 8px 14px;
+    border-radius: 9px;
+    color: #e2e8f0;
+    text-decoration: none;
+    border: 1px solid rgba(226, 232, 240, 0.35);
+    background: rgba(15, 23, 42, 0.4);
+}
+

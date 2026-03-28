@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator.css') }}">
+</head>
+
+<body>
+<a href="/" class="back-btn">Back</a>
+
+<div class="calculator wide">
+    <h2>Unit Converter</h2>
+
+    <form action="/unit-converter" method="POST">
+        <select name="category" id="category" required>
+            <option value="length" {% if selected_category == "length" %}selected{% endif %}>Length</option>
+            <option value="weight" {% if selected_category == "weight" %}selected{% endif %}>Weight</option>
+            <option value="temperature" {% if selected_category == "temperature" %}selected{% endif %}>Temperature</option>
+            <option value="pressure" {% if selected_category == "pressure" %}selected{% endif %}>Pressure</option>
+        </select>
+
+        <input type="number" step="any" name="value" placeholder="Enter value" value="{{ input_value }}">
+
+        <select name="from_unit" id="from_unit" required></select>
+        <select name="to_unit" id="to_unit" required></select>
+
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if error_message %}
+    <div class="result-box error">
+        <p class="result-line">{{ error_message }}</p>
+    </div>
+    {% elif converted_value is defined %}
+    <div class="result-box">
+        <p class="result-line">Converted Value: <span>{{ converted_value }}</span></p>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+const unitsByCategory = {{ units_by_category | tojson }};
+const selectedFrom = "{{ selected_from }}";
+const selectedTo = "{{ selected_to }}";
+
+const categorySelect = document.getElementById("category");
+const fromUnitSelect = document.getElementById("from_unit");
+const toUnitSelect = document.getElementById("to_unit");
+
+function fillUnits() {
+    const category = categorySelect.value;
+    const units = unitsByCategory[category] || [];
+
+    fromUnitSelect.innerHTML = "";
+    toUnitSelect.innerHTML = "";
+
+    units.forEach(unit => {
+        const value = unit[0];
+        const label = unit[1];
+
+        const optionFrom = document.createElement("option");
+        optionFrom.value = value;
+        optionFrom.textContent = label;
+        if (value === selectedFrom) {
+            optionFrom.selected = true;
+        }
+        fromUnitSelect.appendChild(optionFrom);
+
+        const optionTo = document.createElement("option");
+        optionTo.value = value;
+        optionTo.textContent = label;
+        if (value === selectedTo) {
+            optionTo.selected = true;
+        }
+        toUnitSelect.appendChild(optionTo);
+    });
+
+    if (!fromUnitSelect.value && units.length > 0) {
+        fromUnitSelect.value = units[0][0];
+    }
+    if (!toUnitSelect.value && units.length > 0) {
+        toUnitSelect.value = units[Math.min(1, units.length - 1)][0];
+    }
+}
+
+categorySelect.addEventListener("change", fillUnits);
+fillUnits();
+</script>
+
+</body>
+</html>

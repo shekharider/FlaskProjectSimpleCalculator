@@ -1,0 +1,170 @@
+:root {
+    --bg-a: #0f172a;
+    --bg-b: #1d4ed8;
+    --bg-c: #22d3ee;
+    --card: #ffffff;
+    --text-main: #0f172a;
+    --text-soft: #475569;
+    --border: #dbeafe;
+    --accent: #0ea5e9;
+    --accent-hover: #0284c7;
+    --success-bg: #ecfeff;
+    --success-border: #67e8f9;
+    --error-bg: #fff1f2;
+    --error-border: #fda4af;
+    --error-text: #be123c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 16px 24px;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(34, 211, 238, 0.25) 0 180px, transparent 200px),
+        radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.2) 0 160px, transparent 220px),
+        linear-gradient(140deg, var(--bg-a), var(--bg-b), var(--bg-c));
+}
+
+.calculator {
+    width: min(100%, 380px);
+    background: var(--card);
+    padding: 30px 24px 24px;
+    border-radius: 18px;
+    box-shadow: 0 24px 45px rgba(2, 6, 23, 0.35);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.calculator.wide {
+    width: min(100%, 520px);
+}
+
+.calculator h2 {
+    margin: 0 0 18px;
+    color: var(--text-main);
+    font-size: 1.45rem;
+    letter-spacing: 0.2px;
+}
+
+form {
+    margin: 0;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 13px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.98rem;
+    color: var(--text-main);
+    background: #f8fafc;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18);
+    background: #ffffff;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+button[type="submit"] {
+    margin-top: 18px;
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition: transform 0.16s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(3, 105, 161, 0.35);
+    filter: brightness(1.03);
+}
+
+.result-box {
+    margin-top: 18px;
+    text-align: left;
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+.result-box.error {
+    background: var(--error-bg);
+    border-color: var(--error-border);
+}
+
+.result-line {
+    margin: 6px 0;
+    color: var(--text-main);
+    line-height: 1.4;
+    font-size: 0.97rem;
+    font-weight: 600;
+}
+
+.result-box.error .result-line {
+    color: var(--error-text);
+}
+
+.result-line span {
+    color: var(--text-soft);
+    font-weight: 700;
+}
+
+.back-btn {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(5px);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.36);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+    body {
+        padding-top: 82px;
+    }
+
+    .calculator {
+        padding: 24px 16px 18px;
+        border-radius: 14px;
+    }
+
+    .result-line {
+        font-size: 0.93rem;
+    }
+}

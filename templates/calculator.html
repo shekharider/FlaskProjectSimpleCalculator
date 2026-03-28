@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Calculator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='calculator.css') }}">
 </head>
 
 <body>
@@ -17,10 +17,8 @@
 <form action="/calculate" method="POST">
 
 <input type="number" name="num1" placeholder="Enter number 1">
-<br><br>
 
 <input type="number" name="num2" placeholder="Enter number 2">
-<br><br>
 
 <select name="operation">
 <option value="add">Add</option>
@@ -29,44 +27,17 @@
 <option value="div">Divide</option>
 </select>
 
-<br><br>
-
 <button type="submit">Calculate</button>
 
 </form>
 
-<h3>Result: {{ result }}</h3>
+{% if result is defined %}
+<div class="result-box">
+    <p class="result-line">Result: <span>{{ result }}</span></p>
+</div>
+{% endif %}
 
 </div>
-
-
-<script>
-
-function add(){
-    let a = Number(document.getElementById("num1").value);
-    let b = Number(document.getElementById("num2").value);
-    document.getElementById("result").innerHTML = "Result: " + (a + b);
-}
-
-function subtract(){
-    let a = Number(document.getElementById("num1").value);
-    let b = Number(document.getElementById("num2").value);
-    document.getElementById("result").innerHTML = "Result: " + (a - b);
-}
-
-function multiply(){
-    let a = Number(document.getElementById("num1").value);
-    let b = Number(document.getElementById("num2").value);
-    document.getElementById("result").innerHTML = "Result: " + (a * b);
-}
-
-function divide(){
-    let a = Number(document.getElementById("num1").value);
-    let b = Number(document.getElementById("num2").value);
-    document.getElementById("result").innerHTML = "Result: " + (a / b);
-}
-
-</script>
 
 </body>
 </html>
